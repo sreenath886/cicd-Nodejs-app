@@ -1,7 +1,22 @@
+# language: node_js
+# node_js:
+#   - "7"
+# install:
+#   - npm install
+#   - npm install mocha@2.3.1 
+# script: mocha
+
+sudo: required
+
+services:
+  - docker
+
 language: node_js
-node_js:
-  - "7"
 install:
   - npm install
   - npm install mocha@2.3.1 
-script: mocha
+script:
+  - mocha
+
+after_success:
+  - sh .travis/deploy_dockerhub.sh
